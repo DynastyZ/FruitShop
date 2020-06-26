@@ -42,4 +42,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	        <property name="returnPageInfo" value="check"/>
 	    </plugin>
 	</plugins>
+	
+	<mappers>
+		<package name="mybatis"/>
+	</mappers>
 </configuration>
