@@ -30,7 +30,7 @@
 						</div>
 						<div class="form-group">
 							<div class="field field-icon-right">
-								<input type="password" class="input input-big" name="password" value="111111" placeholder="请输入密码" data-validate="required:请填写密码" />
+								<input type="password" class="input input-big" name="passWord" value="111111" placeholder="请输入密码" data-validate="required:请填写密码" />
 								<span class="icon icon-key margin" ></span>
 							</div>
 						</div>

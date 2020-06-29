@@ -4,18 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.study.mapper.ManageMapper">
-	<resultMap type="com.study.po.Manage" id="baseResult">
-		<id property="id" column="id" jdbcType="int" />
+
+	<resultMap type="com.study.po.Manage" id="ResultMapManage">
+		<id property="id" column="id" jdbcType="INTEGER" />
 		<result  property="userName" column="userName" />
 		<result  property="passWord" column="passWord" />
 		<result  property="realName" column="realName" />
 	</resultMap>
 
-	<sql id="manage_field">
+	<sql id="Manage_field">
 		id,userName,passWord,realName
 	</sql>
 	
-	<sql id="manage_insert">
+	<sql id="Manage_insert">
 		#{id},#{userName},#{passWord},#{realName}
 	</sql>
 	
@@ -32,23 +33,23 @@
         </if>
     </sql>
 	
-	<sql id="manage_where">
+	<sql id="Manage_where">
 		<if test="id != null">
-			id = #{id}
+			and id = #{id}
 		</if>
 		<if test="userName != null">
-			,userName = #{userName}
+			and userName = #{userName}
 		</if>
 		<if test="passWord != null">
-			,passWord = #{passWord}
+			and passWord = #{passWord}
 		</if>
 		<if test="realName != null">
-			,realName = #{realName}
+			and realName = #{realName}
 		</if>
 	</sql>
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
-		insert into manage(<include refid="manage_field"></include>) values(<include refid="manage_insert"></include>)
+		insert into manage(<include refid="Manage_field"></include>) values(<include refid="Manage_insert"></include>)
 	</insert>
 	
 	<delete id="deleteById" >
@@ -56,15 +57,14 @@
 	</delete>
 	
 	<delete id="deleteByEntity" >
-		delete from manage where 1=1
-		and 
-		<include refid="manage_where"></include>
+		delete from manage where 1=1 
+		<include refid="Manage_where"></include>
+		
 	</delete>
 	
 	<delete id="deleteByMap" >
-		delete from manage where 1=1
-		and 
-		<include refid="manage_where"></include>
+		delete from manage where 1=1 
+		<include refid="Manage_where"></include>
 	</delete>
 	
 	 <!-- 更新一个实体 -->

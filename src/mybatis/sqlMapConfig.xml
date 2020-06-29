@@ -44,6 +44,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</plugins>
 	
 	<mappers>
-		<package name="mybatis"/>
+		<package name="com.study.mapper"/>
 	</mappers>
 </configuration>
