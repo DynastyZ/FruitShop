@@ -85,9 +85,30 @@ public class ItemCategoryController {
 	public String exadd2(ItemCategory itemCategory){
 		itemCategory.setIsDelete(0);
 		itemCategoryService.insert(itemCategory);
-		return "redirect:/itemCategory/selectBySqlPage2";
+		return "redirect:/itemCategory/selectBySqlPage2?pid=" + itemCategory.getPid();
 	}
 	
+	@RequestMapping("update2")
+	public String update2(@RequestParam("id")Integer id,Model model){
+		ItemCategory entity = itemCategoryService.load(id);
+		model.addAttribute("obj", entity);
+		return "itemCategory/update2";
+	}
 	
+	@RequestMapping("exUpdate2")
+	public String exUpdate2(ItemCategory itemCategory){
+		itemCategoryService.updateById(itemCategory);
+		return "redirect:/itemCategory/selectBySqlPage2?pid=" + itemCategory.getPid();
+	}
+	
+	@RequestMapping("delete2")
+	public String delete2(Integer id){
+		ItemCategory entity = itemCategoryService.load(id);
+		entity.setIsDelete(1);
+		//伪删除一级类目
+		itemCategoryService.updateById(entity);
+		
+		return "redirect:/itemCategory/selectBySqlPage2?pid=" + entity.getPid();
+	}
 	
 }
