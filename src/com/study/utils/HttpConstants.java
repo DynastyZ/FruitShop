@@ -24,5 +24,5 @@ public class HttpConstants {
 	public static final String OPERATION_TYPE_DELETE = "D";
 
 	//项目名称
-	public static final String PROJECT_NAME = "test1";
+	public static final String PROJECT_NAME = "";
 }
