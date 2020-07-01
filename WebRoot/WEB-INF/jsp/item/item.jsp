@@ -12,9 +12,12 @@
 </head>
 <body>
 	<div class="panel admin-panel">
-		<form action="${ctx}/user/findBySql" id="listForm" method="post">
+		<form action="${ctx}/item/findBySql" id="listForm" method="post">
 			<div class="padding border-bottom">
 				<ul class="search" style="padding-left: 10px;">
+					<li>
+	                    <a class="button border-main icon-plus-square-o" href="${ctx}/item/add">添加商品</a>
+	                </li>
 					<li>
 	                    <input type="text" placeholder="请输入商品名" name="name" class="input" value="${obj.name}"
 	                        style="width: 250px;line-height: 17px;display: inline-block" />
@@ -25,26 +28,28 @@
 		</form>
 		<table class="table table-hover text-center">
 			<tr>
-				<th>用户名</th>
-	            <th>手机号</th>
-	            <th>真实姓名</th>
-	            <th>性别</th>
-	            <th>邮箱</th>
-	            <th>地址</th>
+				<th>商品名称</th>
+	            <th>商品主图</th>
+	            <th>商品价格</th>
+	            <th>商品一级分类</th>
+	            <th>商品二级分类</th>
+	            <th>操作</th>
 			</tr>
 			<c:forEach items="${pagers.datas}" var="data" varStatus="l">
 				<tr>
-					
+					<td>${data.name}</td>
+		            <td><img src="${data.url1}" alt="" style="width: 100px;height: 100px;"></td>
+		            <td>${data.price}</td>
+		            <td>${data.yiji.name}</td>
+		            <td>${data.erji.name}</td>
 					<td>
 						<div class="button-group">
-							<a class="button border-main" href="${ctx}/itemCategory/selectBySqlPage2?pid=${data.id}">
-								<span class="icon-edit">查看二级分类</span> 
-							</a> 
-							<a class="button border-main" href="${ctx}/itemCategory/update?id=${data.id}">
+							
+							<a class="button border-main" href="${ctx}/item/update?id=${data.id}">
 								<span class="icon-edit">修改</span> 
 							</a> 
-							<a class="button border-red" href="${ctx}/itemCategory/delete?id=${data.id}">
-								<span class="icon-trash-o">删除</span> 
+							<a class="button border-red" href="${ctx}/item/delete?id=${data.id}">
+								<span class="icon-trash-o">下架</span> 
 							</a>
 						</div>
 					</td>
