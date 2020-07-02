@@ -12,35 +12,47 @@
 </head>
 <body>
 	<div class="panel admin-panel">
+		<form action="${ctx}/news/findBySql" id="listForm" method="post">
+			<div class="padding border-bottom">
+				<ul class="search" style="padding-left: 10px;">
+					<li>
+	                    <a class="button border-main icon-plus-square-o" href="${ctx}/news/add">添加公告</a>
+	                </li>
+					<li>
+	                    <input type="text" placeholder="请输入筛选信息" name="name" class="input" value="${obj.name}"
+	                        style="width: 250px;line-height: 17px;display: inline-block" />
+	                    <a href="javascript:void(0)" onclick="changeSearch()" class="button border-main icon-search">搜索</a>
+                	</li>
+				</ul>
+			</div>
+		</form>
 		<table class="table table-hover text-center">
 			<tr>
-				<th>商品名称</th> 
-	            <th>商品主图</th>
-	            <th>商品单价</th>
-	            <th>购买数量</th>
-	            <th>小计</th>
-	            <th>状态</th>
+				<th>名称</th>
+	            <th>发布时间</th>
+	            <th>操作</th>
 			</tr>
 			<c:forEach items="${pagers.datas}" var="data" varStatus="l">
 				<tr>
-					<td>${data.item.name}</td>
-					<td><img src="${data.item.url1}" width="100px"/></td>
-					<td>${data.item.price}</td>
-					<td>${data.num}</td>
-					<td>${data.total}</td>
-					<td style="color:red">
-						<c:if test="${data.status==0}" >待发货</c:if>
-						<c:if test="${data.status==1}" >已取消</c:if>
+					<td>${data.name}</td>
+		            <td><fmt:formatDate value="${data.addTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+					<td>
+						<div class="button-group">
+							<a class="button border-main" href="${ctx}/news/update?id=${data.id}">
+								<span class="icon-edit">修改</span> 
+							</a> 
+							<a class="button border-red" href="${ctx}/news/delete?id=${data.id}">
+								<span class="icon-trash-o">删除</span> 
+							</a>
+						</div>
 					</td>
-					
-					
 				</tr>
 			</c:forEach>
 			<tr>
 				<td colspan="8">
 					<div class="pagelist">
 						<!--分页开始-->
-						<pg:pager url="${ctx}/orderDetail/findBySql" maxIndexPages="5"
+						<pg:pager url="${ctx}/news/selectBySql" maxIndexPages="5"
 							items="${pagers.total}" maxPageItems="15"
 							export="curPage=pageNumber">
 							<pg:last> 共${pagers.total}记录，共${pageNumber}页，</pg:last>

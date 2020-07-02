@@ -39,5 +39,8 @@ public class LoginController extends BaseController{
 		return "login/managerLogin";
 	}
 	
-	
+	@RequestMapping("uIndex")
+	public String uLogin(HttpServletRequest request) {
+		return "login/uIndex";
+	}
 }

@@ -109,9 +109,7 @@ public class ItemController extends BaseController {
     @RequestMapping("exUpdate")
     public String exUpdate(Item item,@RequestParam("file")CommonsMultipartFile[] files,HttpServletRequest request) throws IllegalStateException, IOException {
     	if(files.length>0) {
-    		System.out.println(files.length +"---------");
     		for(int i=0;i<files.length;i++) {
-    			System.out.println(files[i] +"==========");
     			String n = UUIDUtils.create();
 				String path = SystemContext.getRealPath()+"/resource/ueditor/upload/" +n+files[i].getOriginalFilename();
 				File newFile = new File(path);
