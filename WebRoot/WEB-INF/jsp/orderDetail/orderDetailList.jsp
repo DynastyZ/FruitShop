@@ -12,58 +12,35 @@
 </head>
 <body>
 	<div class="panel admin-panel">
-		<form action="${ctx}/itemOrder/findBySql" id="listForm" method="post">
-			<div class="padding border-bottom">
-				<ul class="search" style="padding-left: 10px;">
-					<li>
-	                    <input type="text" placeholder="请输入订单号" name="code" class="input" value="${obj.code}"
-	                        style="width: 250px;line-height: 17px;display: inline-block" />
-	                    <a href="javascript:void(0)" onclick="changeSearch()" class="button border-main icon-search">搜索</a>
-                	</li>
-				</ul>
-			</div>
-		</form>
 		<table class="table table-hover text-center">
 			<tr>
-				<th>订单号</th>
-	            <th>下单时间</th>
-	            <th>总金额</th>
-	            <th>下单人</th>
-	            <th>订单状态</th>
-	            <th>操作</th>
+				<th>商品名称</th>
+	            <th>商品主图</th>
+	            <th>商品单价</th>
+	            <th>购买数量</th>
+	            <th>小计</th>
+	            <th>状态</th>
 			</tr>
 			<c:forEach items="${pagers.datas}" var="data" varStatus="l">
 				<tr>
-					<td>${data.code}</td>
-					<td><fmt:formatDate value="${data.addTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+					<td>${data.item.name}</td>
+					<td><img src="${data.item.url1}" /></td>
+					<td>${data.item.price}</td>
+					<td>${data.num}</td>
 					<td>${data.total}</td>
-					<td>${data.user.userName}</td>
 					<td style="color:red">
 						<c:if test="${data.status==0}" >待发货</c:if>
 						<c:if test="${data.status==1}" >已取消</c:if>
-						<c:if test="${data.status==2}" >待收货</c:if>
-						<c:if test="${data.status==3}" >已评价</c:if>
 					</td>
 					
-					<td>
-						<div class="button-group">
-							<a class="button border-main" href="${ctx}/orderDetail/findBySql">
-								<span class="icon-edit">查看购买商品</span> 
-							</a> 
-							<c:if test="${data.status}==0" >待发货
-								<a class="button border-red" href="#">
-									<span class="icon-trash-o">去发货</span> 
-								</a>
-							</c:if>
-						</div>
-					</td>
+					
 				</tr>
 			</c:forEach>
 			<tr>
 				<td colspan="8">
 					<div class="pagelist">
 						<!--分页开始-->
-						<pg:pager url="${ctx}/itemOrder/findBySql" maxIndexPages="5"
+						<pg:pager url="${ctx}/orderDetail/findBySql" maxIndexPages="5"
 							items="${pagers.total}" maxPageItems="15"
 							export="curPage=pageNumber">
 							<pg:last> 共${pagers.total}记录，共${pageNumber}页，</pg:last>

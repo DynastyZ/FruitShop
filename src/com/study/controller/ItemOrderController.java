@@ -7,26 +7,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.study.base.BaseController;
 import com.study.po.ItemOrder;
+import com.study.service.ItemOrderService;
 import com.study.utils.Pager;
 
 @Controller
 @RequestMapping("itemOrder")
 public class ItemOrderController extends BaseController{
 	
-//	@Autowired
+	@Autowired
+	ItemOrderService itemOrderService;
+	
 	@RequestMapping("findBySql")
 	public String findBySql(ItemOrder itemOrder,Model model) {
 		String sql = "select * from item_order where 1=1 ";
 		if(itemOrder.getCode() != null) {
-			sql += " like '% " + itemOrder.getCode() + " %'";
+			sql += "and code like '%" + itemOrder.getCode() + "%'";
 		}
 		sql += "order by id ";
 		
-		Pager<ItemOrder>pager pagers = ;
+		Pager<ItemOrder> pagers = itemOrderService.findBySqlRerturnEntity(sql);
 		
 		model.addAttribute("pagers", pagers);
 		model.addAttribute("obj", itemOrder);
-		return "itemorder/itemOrder";
+		return "itemOrder/itemOrder";
 	}
 
 }
