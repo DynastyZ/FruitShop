@@ -6,7 +6,7 @@
             <c:if test="${userId!=null}">
                 <a href="#">欢迎您：${username}</a>
                 <b></b>
-                <a href="${ctx}/login/uTui">退出</a>
+                <a href="${ctx}/login/uLogout">退出</a>
                 <b></b>
                 <a href="${ctx}/car/findBySql">我的购物车</a>
                 <b></b>
@@ -14,7 +14,7 @@
             <c:if test="${userId==null}">
                 <a href="${ctx}/login/uLogin">登录</a>
                 <b></b>
-                <a href="${ctx}/login/res">注册</a>
+                <a href="${ctx}/login/register">注册</a>
                 <b></b>
             </c:if>
             <a href="${ctx}/user/view">个人中心</a>
