@@ -52,20 +52,21 @@
 			</div>
 		</div>
 	</div>
+	<!--轮播图  -->
 	<div class="width1200 center_yh hidden_yh" style="position: relative;z-index:80;">
-    <div class="example2" style="width: 1200px;height: 490px;overflow: hidden;margin-left: 230px;">
-        <ul>
-            <li><img src="${ctx}/resource/images/a.webp" alt=""></li>
-            <li><img src="${ctx}/resource/images/b.webp" alt=""></li>
-            <li><img src="${ctx}/resource/images/c.webp" alt=""></li>
-            <li><img src="${ctx}/resource/images/d.webp" alt=""></li>
-        </ul>
-    </div>
-    <script>
-        $(function () {
-            $(".example2").luara({width:"966",height:"490",interval:3000,selected:"seleted",deriction:"left"});
-        });
-    </script>
+	    <div class="example2" style="width: 1200px;height: 490px;overflow: hidden;margin-left: 230px;">
+	        <ul>
+	            <li><img src="${ctx}/resource/images/a.webp" alt=""></li>
+	            <li><img src="${ctx}/resource/images/b.webp" alt=""></li>
+	            <li><img src="${ctx}/resource/images/c.webp" alt=""></li>
+	            <li><img src="${ctx}/resource/images/d.webp" alt=""></li>
+	        </ul>
+	    </div>
+	    <script>
+	        $(function () {
+	            $(".example2").luara({width:"966",height:"490",interval:3000,selected:"seleted",deriction:"left"});
+	        });
+	    </script>
 	</div>
 	<!--折扣商品-->
 	<div class="width1200 center_yh hidden_yh">

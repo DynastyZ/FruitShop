@@ -32,16 +32,16 @@
             passWord = #{passWord},
         </if>
         <if test="phone != null">
-            phone = #{phone}
+            phone = #{phone},
         </if>
         <if test="realName != null">
-            realName = #{realName}
+            realName = #{realName},
         </if>
         <if test="sex != null">
-            sex = #{sex}
+            sex = #{sex},
         </if>
         <if test="address != null">
-            address = #{address}
+            address = #{address},
         </if>
         <if test="email != null">
             email = #{email}
@@ -206,16 +206,16 @@
                     passWord = #{item.passWord},
                 </if>
                 <if test="item.phone != null">
-                    phone = #{item.phone}
+                    phone = #{item.phone},
                 </if>
                 <if test="item.realName != null">
-                    realName = #{item.realName}
+                    realName = #{item.realName},
                 </if>
                 <if test="item.sex != null">
-                    sex = #{item.sex}
+                    sex = #{item.sex},
                 </if>
                 <if test="item.address != null">
-                    address = #{item.address}
+                    address = #{item.address},
                 </if>
                 <if test="item.email != null">
                     email = #{item.email}

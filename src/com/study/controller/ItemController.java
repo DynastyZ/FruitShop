@@ -149,4 +149,39 @@ public class ItemController extends BaseController {
     	return "redirect:/item/findBySql";
     }
     
+    /**
+     * 按关键字或者二级分类查询
+     */
+    @RequestMapping("/shoplist")
+    public String shoplist(Item item,String condition,Model model){
+        String sql = "select * from item where isDelete=0 ";
+        if(!isEmpty(item.getCategoryIdTwo())){
+            sql +=" and category_id_two = " +item.getCategoryIdTwo();
+        }
+        if(!isEmpty(condition)){
+            sql += " and name like '%" + condition +"%' ";
+            model.addAttribute("condition",condition);
+        }
+        if(!isEmpty(item.getPrice())) {
+        	 sql += " order by (price+0) desc";
+        }
+        if(!isEmpty(item.getGmNum())) {
+       	 sql += " order by gmNum desc";
+        }
+        if( isEmpty(item.getGmNum()) & isEmpty(item.getPrice())) {
+          	 sql += " order by id";
+        }
+        Pager<Item> pagers = itemService.findBySqlRerturnEntity(sql);
+        model.addAttribute("pagers",pagers);
+        model.addAttribute("obj",item);
+        return "item/shoplist";
+    }
+    
+    @RequestMapping("/view")
+    public String view(Integer id,Model model){
+    	Item load = itemService.load(id);
+    	model.addAttribute("obj", load);
+    	return "item/view";
+    }
+    
 }

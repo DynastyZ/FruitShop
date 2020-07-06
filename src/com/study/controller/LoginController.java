@@ -90,7 +90,8 @@ public class LoginController extends BaseController{
 	
 	@RequestMapping("uLogout")
 	public String uLogOut(HttpServletRequest request) {
-		request.getSession().removeAttribute("user");
+		request.getSession().removeAttribute("userName");
+		request.getSession().removeAttribute("userId");
 		return "redirect:/login/uIndex";
 	}
 	
@@ -113,9 +114,8 @@ public class LoginController extends BaseController{
 		if(getEntity == null) {
 			return "redirect:/login/uIndex";
 		}
-		request.getSession().setAttribute("user",getEntity);
-		model.addAttribute("userId", getEntity.getId());
-		model.addAttribute("username", getEntity.getUserName());
+		request.getSession().setAttribute("userId",getEntity.getId());
+		request.getSession().setAttribute("userName",getEntity.getUserName());
 		return "forward:/login/uIndex";
 	}
 	

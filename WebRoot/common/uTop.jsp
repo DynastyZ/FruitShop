@@ -4,7 +4,7 @@
         <font class="left_yh">欢迎来到水果蔬菜商城！</font>
         <div class="right_yh" id="fast_jump">
             <c:if test="${userId!=null}">
-                <a href="#">欢迎您：${username}</a>
+                <a href="#">欢迎您：${userName}</a>
                 <b></b>
                 <a href="${ctx}/login/uLogout">退出</a>
                 <b></b>

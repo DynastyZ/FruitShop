@@ -1,5 +1,7 @@
 package com.study.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,5 +32,35 @@ public class UserController extends BaseController{
 		return "user/user";
 	}
 	
+	/**
+     * 查看用户信息
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping("/view")
+    public String view(Model model, HttpServletRequest request){
+        Object attribute = request.getSession().getAttribute("userId");
+        if(attribute==null){
+            return "redirect:/login/uLogin";
+        }
+        Integer userId = Integer.valueOf(attribute.toString());
+        User obj = userService.load(userId);
+        model.addAttribute("obj",obj);
+        return "user/view";
+    }
 	
+    @RequestMapping("/exUpdate")
+    public String exUpdate(User user,Model model, HttpServletRequest request){
+        Object attribute = request.getSession().getAttribute("userId");
+        if(attribute==null){
+            return "redirect:/login/uLogin";
+        }
+        Integer userId = Integer.valueOf(attribute.toString());
+        user.setId(userId);
+        userService.updateById(user);
+        model.addAttribute("obj", user);	
+        return "user/view";
+    }
+    
 }
