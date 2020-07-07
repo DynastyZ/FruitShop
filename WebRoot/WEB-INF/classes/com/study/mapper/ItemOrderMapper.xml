@@ -23,7 +23,10 @@
         <result property="isDelete" column="isDelete" jdbcType="INTEGER"/>
         <result property="status" column="status" jdbcType="INTEGER"/>
         <association property="user" column="user_id" select="com.study.mapper.UserMapper.load"/>
+        <collection property="orderDetails" column="id" ofType="com.study.po.OrderDetail" select="com.study.mapper.OrderDetailMapper.listByOrderId" ></collection>
     </resultMap>
+
+	
 
     <!-- 声明数据库字段 -->
     <sql id="ItemOrder_field">
@@ -87,6 +90,11 @@
             and status = #{status}
         </if>
     </sql>
+
+	<select id ="" resultMap="ResultMapItemOrderDto">
+		select * from item_order WHERE 1=1 <include refid="ItemOrder_where"></include>
+	
+	</select>
 
     <!--    新增        -->
     <!--    参数：实体类-->

@@ -2,6 +2,7 @@ package com.study.po;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 订单
@@ -47,24 +48,28 @@ public class ItemOrder implements Serializable {
     private Integer isDelete;
 
     /**
-     * 0.新建待发货1.已取消 2已发货3.到收货4已评价
+     * 0.新建待发货1.已取消 2.已发货 3.待收货 4.已评价
      */
     private Integer status;
 
+    private List<OrderDetail> orderDetails;
 
-    public ItemOrder(Integer id, Integer itemId, Integer userId, User user, String code, Date addTime, String total, Integer isDelete, Integer status) {
-        this.id = id;
-        this.itemId = itemId;
-        this.userId = userId;
-        this.user = user;
-        this.code = code;
-        this.addTime = addTime;
-        this.total = total;
-        this.isDelete = isDelete;
-        this.status = status;
-    }
+    public ItemOrder(Integer id, Integer itemId, Integer userId, User user, String code, Date addTime, String total,
+			Integer isDelete, Integer status, List<OrderDetail> orderDetails) {
+		super();
+		this.id = id;
+		this.itemId = itemId;
+		this.userId = userId;
+		this.user = user;
+		this.code = code;
+		this.addTime = addTime;
+		this.total = total;
+		this.isDelete = isDelete;
+		this.status = status;
+		this.orderDetails = orderDetails;
+	}
 
-    public ItemOrder() {
+	public ItemOrder() {
     }
 
     public Integer getId() {
@@ -139,19 +144,21 @@ public class ItemOrder implements Serializable {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "ItemOrder{" +
-                "id=" + id +
-                ", itemId=" + itemId +
-                ", userId=" + userId +
-                ", user=" + user +
-                ", code='" + code + '\'' +
-                ", addTime=" + addTime +
-                ", total='" + total + '\'' +
-                ", isDelete=" + isDelete +
-                ", status=" + status +
-                '}';
-    }
+	public List<OrderDetail> getOrderDetails() {
+		return orderDetails;
+	}
+
+	public void setOrderDetails(List<OrderDetail> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
+
+	@Override
+	public String toString() {
+		return "ItemOrder [id=" + id + ", itemId=" + itemId + ", userId=" + userId + ", user=" + user + ", code=" + code
+				+ ", addTime=" + addTime + ", total=" + total + ", isDelete=" + isDelete + ", status=" + status
+				+ ", orderDetails=" + orderDetails + "]";
+	}
+
+   
 
 }
