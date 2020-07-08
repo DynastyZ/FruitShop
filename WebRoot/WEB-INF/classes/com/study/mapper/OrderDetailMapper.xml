@@ -28,7 +28,7 @@
 
     <!-- 实体类属性-->
     <sql id="OrderDetail_insert">
-        #{id},#{item_id},#{order_id},#{status},#{num},#{total}
+        #{id},#{itemId},#{orderId},#{status},#{num},#{total}
     </sql>
 
     <!-- 更新结果  -->

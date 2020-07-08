@@ -78,7 +78,7 @@
                                 <font class="font24">总金额</font>
                                 <font class="font24 red">￥${data.total}</font>
                                 <c:if test="${data.status==0}">
-                                    <a href="${ctx}/itemOrder/qx?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
+                                    <a href="${ctx}/itemOrder/cancle?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
                                         取消订单
                                     </a>
                                 </c:if>
@@ -89,7 +89,7 @@
                                 </c:if>
                                 <c:if test="${data.status==2}">
                                     <a href="${ctx}/itemOrder/sh?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
-                                        去收货
+                                        确认收货
                                     </a>
                                 </c:if>
                                 <c:if test="${data.status==3}">
@@ -135,7 +135,7 @@
                                 <font class="font24">总金额</font>
                                 <font class="font24 red">￥${data.total}</font>
                                 <c:if test="${data.status==0}">
-                                    <a href="${ctx}/itemOrder/qx?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
+                                    <a href="${ctx}/itemOrder/cancle?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
                                         取消订单
                                     </a>
                                 </c:if>
@@ -146,7 +146,7 @@
                                 </c:if>
                                 <c:if test="${data.status==2}">
                                     <a href="${ctx}/itemOrder/sh?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
-                                        去收货
+                                        确认收货
                                     </a>
                                 </c:if>
                                 <c:if test="${data.status==3}">
@@ -192,7 +192,7 @@
                                 <font class="font24">总金额</font>
                                 <font class="font24 red">￥${data.total}</font>
                                 <c:if test="${data.status==0}">
-                                    <a href="${ctx}/itemOrder/qx?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
+                                    <a href="${ctx}/itemOrder/cancle?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
                                         取消订单
                                     </a>
                                 </c:if>
@@ -203,7 +203,7 @@
                                 </c:if>
                                 <c:if test="${data.status==2}">
                                     <a href="${ctx}/itemOrder/sh?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
-                                        去收货
+                                        确认收货
                                     </a>
                                 </c:if>
                                 <c:if test="${data.status==3}">
@@ -249,7 +249,7 @@
                                 <font class="font24">总金额</font>
                                 <font class="font24 red">￥${data.total}</font>
                                 <c:if test="${data.status==0}">
-                                    <a href="${ctx}/itemOrder/qx?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
+                                    <a href="${ctx}/itemOrder/cancle?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
                                         取消订单
                                     </a>
                                 </c:if>
@@ -260,7 +260,7 @@
                                 </c:if>
                                 <c:if test="${data.status==2}">
                                     <a href="${ctx}/itemOrder/sh?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
-                                        去收货
+                                        确认收货
                                     </a>
                                 </c:if>
                                 <c:if test="${data.status==3}">
@@ -305,7 +305,7 @@
                                 <font class="font24">总金额</font>
                                 <font class="font24 red">￥${data.total}</font>
                                 <c:if test="${data.status==0}">
-                                    <a href="${ctx}/itemOrder/qx?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
+                                    <a href="${ctx}/itemOrder/cancle?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
                                         取消订单
                                     </a>
                                 </c:if>
@@ -316,7 +316,7 @@
                                 </c:if>
                                 <c:if test="${data.status==2}">
                                     <a href="${ctx}/itemOrder/sh?id=${data.id}" class="c_33 onHover font20 onorange right_yh" style="margin-top: 10px;padding-right: 6px;">
-                                        去收货
+                                        确认收货
                                     </a>
                                 </c:if>
                                 <c:if test="${data.status==3}">

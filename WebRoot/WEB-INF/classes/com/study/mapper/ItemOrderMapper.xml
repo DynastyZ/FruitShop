@@ -35,7 +35,7 @@
 
     <!-- 实体类属性-->
     <sql id="ItemOrder_insert">
-        #{id},#{item_id},#{user_id},#{code},#{addTime},#{total},#{isDelete},#{status}
+        #{id},#{itemId},#{userId},#{code},#{addTime},#{total},#{isDelete},#{status}
     </sql>
 
     <!-- 更新结果  -->
@@ -209,7 +209,7 @@
         <include refid="ItemOrder_field"/>
         ) values
         <foreach collection="list" item="item" index="index" separator=",">
-            (#{item.item_id},#{item.user_id},#{item.code},#{item.addTime},#{item.total},#{item.isDelete},#{item.status})
+            (#{item.itemId},#{item.userId},#{item.code},#{item.addTime},#{item.total},#{item.isDelete},#{item.status})
         </foreach>
     </select>
 

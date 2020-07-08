@@ -50,11 +50,12 @@
 							<a class="button border-main" href="${ctx}/orderDetail/findBySql">
 								<span class="icon-edit">查看购买商品</span> 
 							</a> 
-							<c:if test="${data.status}==0" >待发货
-								<a class="button border-red" href="#">
+							<c:if test="${data.status==0}" >
+								<a class="button border-red" href="${ctx}/itemOrder/send?id=${data.id}">
 									<span class="icon-trash-o">去发货</span> 
 								</a>
 							</c:if>
+							
 						</div>
 					</td>
 				</tr>

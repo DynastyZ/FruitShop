@@ -2,11 +2,13 @@ package com.study.controller;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -15,6 +17,7 @@ import com.study.po.Car;
 import com.study.po.Item;
 import com.study.service.CarService;
 import com.study.service.ItemService;
+import com.study.utils.Pager;
 
 /**
  * 购物车
@@ -52,5 +55,26 @@ public class CarController {
     	carService.insert(car);
     	js.put("result", 1);
 		return js.toJSONString();
+    }
+    
+    @RequestMapping("findBySql")
+    public String findBySql(Model model,HttpServletRequest request) {
+    	Object attribute = request.getSession().getAttribute("userId");
+		if (attribute == null) {
+			return "redirect:/login/uLogin";
+		}
+		Integer userId = Integer.valueOf(attribute.toString());
+		String sql = "select * from car where user_id=" + userId +" order by id desc";
+		List<Car> carList = carService.listBySqlReturnEntity(sql);
+		
+		model.addAttribute("carList", carList);
+    	return "car/myCar";
+    }
+
+    @RequestMapping("delete")
+    @ResponseBody
+    public String delete(Integer id) {
+    	carService.deleteById(id);
+    	return "delete success!";
     }
 }
