@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.study.base.BaseController;
 import com.study.po.CategoryDto;
 import com.study.po.Item;
@@ -112,11 +114,41 @@ public class LoginController extends BaseController{
 	public String utoLogin(User user,Model model,HttpServletRequest request) {
 		User getEntity = userService.getByEntity(user);
 		if(getEntity == null) {
-			return "redirect:/login/uIndex";
+			return "redirect:/login/uLogin";
 		}
 		request.getSession().setAttribute("userId",getEntity.getId());
 		request.getSession().setAttribute("userName",getEntity.getUserName());
 		return "forward:/login/uIndex";
 	}
 	
+	@RequestMapping("pass")
+	public String pass(HttpServletRequest request,Model model) {
+		Integer userID = (Integer)request.getSession().getAttribute("userId");
+    	if(userID == null){
+    		return "redirect:/login/uLogin";
+    	}
+    	
+    	User load = userService.load(userID);
+    	model.addAttribute("obj", load);
+		return "login/pass";
+	}
+	
+
+	@RequestMapping("upass")
+	@ResponseBody
+	public String upass(String pwd,HttpServletRequest request,Model model) {
+		Integer userID = (Integer)request.getSession().getAttribute("userId");
+		JSONObject js = new JSONObject();
+    	if(userID == null){
+    		js.put("result", 0);
+    		return js.toJSONString();
+    	}
+    	
+    	User load = userService.load(userID);
+    	System.out.println(pwd);
+    	load.setPassWord(pwd);
+    	userService.updateById(load);
+    	js.put("result", 1);
+    	return js.toJSONString();
+	}
 }

@@ -27,6 +27,7 @@
         <result property="isDelete" column="isDelete" jdbcType="INTEGER"/>
         <association property="yiji" column="category_id_one" select="com.study.mapper.ItemCategoryMapper.load"/>
         <association property="erji" column="category_id_two" select="com.study.mapper.ItemCategoryMapper.load"/>
+        <collection property="pjList" column="id" ofType="com.study.po.Comment" select="com.study.mapper.CommentMapper.listForItem"></collection>
     </resultMap>
 
     <!-- 声明数据库字段 -->

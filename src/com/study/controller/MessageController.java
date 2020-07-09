@@ -1,10 +1,15 @@
 package com.study.controller;
 
+import javax.json.JsonObject;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.study.base.BaseController;
 import com.study.po.Message;
 import com.study.service.MessageService;
@@ -37,12 +42,25 @@ public class MessageController extends BaseController {
     }
     
   
-    @RequestMapping("/delete")
+    @RequestMapping("/delete") 
     public String delete(Integer id){
     	messageService.deleteById(id);
         return "redirect:/message/findBySql";
     }
     
+    
+    @RequestMapping("/add")
+    public String add(){
+    	return "message/add";
+    }
+    
+    @RequestMapping("/exAdd")
+    @ResponseBody
+    public String exAdd(Message mes){
+    	JSONObject js = new JSONObject();
+    	messageService.insert(mes);
+    	return js.toJSONString();
+    }
     
     
 }

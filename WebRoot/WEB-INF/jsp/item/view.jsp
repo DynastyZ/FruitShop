@@ -110,7 +110,22 @@
 	                ${obj.ms}
 	            </div>
 	            <div id="spPj">
-	                商品评价
+	                <div class="width100 hidden_yh" style="padding-bottom: 20px;border-bottom: 1px dashed #ddd; margin-bottom: 10px;">
+	                    <c:forEach items="${obj.pjList}" var="data" varStatus="l">
+	                        <div style="width: 790px;float: right;overflow:hidden;margin-top: 20px;">
+	                            <img src="${ctx}/resource/user/images/x.jpg" style="width: 40px;height: 40px;border-radius: 50%;float: left;border:1px solid #ddd;margin-top: 20px;margin-right: 30px;">
+	                            <h3 class="font16 c_33 font100" style="color: red;font-weight: bold;">${data.user.userName}</h3>
+	                            <p class="font14 c_99" style="margin-top: 6px;">
+	                                <fmt:formatDate value="${data.addTime}" pattern="yyyy-MM-dd"/>
+	                            </p>
+	                            <p class="font16 c_33" style="margin-top: 6px;">
+	                                ${data.content}
+	                            </p>
+	                            <div class="width100 hidden_yh" style="padding-bottom: 20px; border-bottom: 1px dashed #ddd;margin-bottom: 10px;">
+	                            </div>
+	                        </div>
+	                    </c:forEach>
+	                </div>
 	            </div>
 	        </div>
 	    </div>

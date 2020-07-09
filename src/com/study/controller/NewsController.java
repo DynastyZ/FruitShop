@@ -69,6 +69,20 @@ public class NewsController extends BaseController {
         return "redirect:/news/findBySql";
     }
     
+    @RequestMapping("/list")
+    public String list(Integer id,Model model){
+        Pager<News> pagers = newsService.findByEntity(new News());
+        model.addAttribute("pagers", pagers);
+        return "news/list";
+    }
+    
+    @RequestMapping("/view")
+    public String view(Integer id,Model model){
+        News load = newsService.load(id);
+        
+        model.addAttribute("obj", load);
+        return "news//view";
+    }
     
     
 }

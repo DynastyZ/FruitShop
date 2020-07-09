@@ -1,6 +1,7 @@
 package com.study.po;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 商品
@@ -98,6 +99,11 @@ public class Item implements Serializable{
      * 是否有效 0有效 1已删除
      */
     private Integer isDelete;
+    
+    /**
+     * 评价列表
+     */
+    private List<Comment> pjList;
 
     public Integer getId() {
         return id;
@@ -290,34 +296,25 @@ public class Item implements Serializable{
     public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
     }
+    
+    
+    public List<Comment> getPjList() {
+		return pjList;
+	}
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price='" + price + '\'' +
-                ", zk=" + zk +
-                ", scNum=" + scNum +
-                ", gmNum=" + gmNum +
-                ", url1='" + url1 + '\'' +
-                ", url2='" + url2 + '\'' +
-                ", url3='" + url3 + '\'' +
-                ", url4='" + url4 + '\'' +
-                ", url5='" + url5 + '\'' +
-                ", ms='" + ms + '\'' +
-                ", pam1='" + pam1 + '\'' +
-                ", pam2='" + pam2 + '\'' +
-                ", pam3='" + pam3 + '\'' +
-                ", val1='" + val1 + '\'' +
-                ", val2='" + val2 + '\'' +
-                ", val3='" + val3 + '\'' +
-                ", type=" + type +
-                ", categoryIdOne=" + categoryIdOne +
-                ", yiji=" + yiji +
-                ", categoryIdTwo=" + categoryIdTwo +
-                ", erji=" + erji +
-                ", isDelete=" + isDelete +
-                '}';
-    }
+	public void setPjList(List<Comment> pjList) {
+		this.pjList = pjList;
+	}
+
+	@Override
+	public String toString() {
+		return "Item [id=" + id + ", name=" + name + ", price=" + price + ", zk=" + zk + ", scNum=" + scNum + ", gmNum="
+				+ gmNum + ", url1=" + url1 + ", url2=" + url2 + ", url3=" + url3 + ", url4=" + url4 + ", url5=" + url5
+				+ ", ms=" + ms + ", pam1=" + pam1 + ", pam2=" + pam2 + ", pam3=" + pam3 + ", val1=" + val1 + ", val2="
+				+ val2 + ", val3=" + val3 + ", type=" + type + ", categoryIdOne=" + categoryIdOne + ", yiji=" + yiji
+				+ ", categoryIdTwo=" + categoryIdTwo + ", erji=" + erji + ", isDelete=" + isDelete + ", pjList="
+				+ pjList + "]";
+	}
+
+	
 }

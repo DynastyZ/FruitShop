@@ -11,6 +11,8 @@
         <association property="user" column="user_id" select="com.study.mapper.UserMapper.load"/>
     </resultMap>
 
+
+
     <!-- 声明数据库字段 -->
     <sql id="Comment_field">
         id,user_id,item_id,content,addTime
@@ -55,6 +57,10 @@
             and addTime = #{addTime}
         </if>
     </sql>
+	
+	<select id="listForItem" resultMap="ResultMapComment">
+		select * from comment where item_id=#{id} order by id desc
+	</select>
 
     <!--    新增        -->
     <!--    参数：实体类-->
